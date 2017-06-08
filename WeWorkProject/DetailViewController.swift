@@ -127,8 +127,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         cell.IssueNumber.text = "\(repository?.issues[indexPath.last!].number ?? -1)"
-        cell.IssueTitle.text = repository?.issues[indexPath.last!].title
-        cell.IssueDescription.text = repository?.issues[indexPath.last!].descriptionString
+        if let cellTitle = cell.IssueTitle {
+            cellTitle.text = repository?.issues[indexPath.last!].title
+        }
+        if let cellDescription = cell.IssueDescription {
+            cellDescription.text = repository?.issues[indexPath.last!].descriptionString
+        }
         if repository?.issues[indexPath.last!].state == "open" {
             cell.IssueStatus.setOn(true, animated: true)
         } else {

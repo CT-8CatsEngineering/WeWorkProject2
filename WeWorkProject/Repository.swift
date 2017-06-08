@@ -23,8 +23,12 @@ class Repository: NSObject, URLSessionDelegate {
         name = content["name"] as! String
         repoPath = content["html_url"] as! String
         id = content["id"] as! Int
-        descriptionString = content["description"] as! String
-       
+        if content["description"] is NSNull {
+            descriptionString = ""
+        } else {
+            descriptionString = content["description"] as! String
+        }
+        
         issuesPath = content["issues_url"] as! String  //"issues_url": https://api.github.com/repos/CT-8CatsEngineering/GradeBook/issues{/number}
         let substringIndex = issuesPath.index(issuesPath.endIndex, offsetBy: -9)
         issuesPath = issuesPath.substring(to: substringIndex)

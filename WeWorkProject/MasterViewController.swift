@@ -8,7 +8,7 @@
 
 import UIKit
 
-let oauth_Token = ""//put your oauth Token here
+let oauth_Token = ""
 
 class MasterViewController: UITableViewController, URLSessionDelegate {
 
